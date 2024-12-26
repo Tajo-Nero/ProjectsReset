@@ -21,6 +21,8 @@ namespace ProjectsReset
                 Key.GetKey();
                 Map.DrawMap();
             }
+
+            Console.WriteLine("dg");
         }
     }
 }
