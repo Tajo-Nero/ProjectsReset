@@ -41,18 +41,22 @@ namespace ProjectsReset
                     }
                 }
             }
-
+           
+        }
+        public static void EnemyMove()
+        {
             if (EnemyLPos[1] <= Map._x - Map._x)//왼벽에 적 왼날개 닿으면
             {
                 EnemyLPos[1] = Map._x + 1;
                 EnemyCorePos[1] = Map._x + (Map._x + 1);
+                EnemyRPos[1] = Map._x + (Map._x+2);
             }
-            if (EnemyRPos[1] >= Map._x)//오른벽에 적오른날개 닿으면
+            else if (EnemyRPos[1] >= Map._x)//오른벽에 적오른날개 닿으면
             {
                 EnemyRPos[1] = Map._x - 1;
                 EnemyCorePos[1] = Map._x - (Map._x - 1);
+                EnemyLPos[1] = Map._x - (Map._x - 2);
             }
-
         }
         public static void EnemyShot()
         {

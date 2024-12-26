@@ -12,7 +12,7 @@ namespace ProjectsReset
         public static char _playerCore = '0';//플레이어모양
         public static char _playerLefe = '<';
         public static char _playerRight = '>';
-        public static char _playerHead = '!';
+        public static char _playerHead = '1';
 
        public static Bullet _bullet;
         public Player(int y, int x)
@@ -47,6 +47,7 @@ namespace ProjectsReset
                     }
                 }
             }
+            
         }
         public static void MoveLeft()
         {
@@ -85,31 +86,7 @@ namespace ProjectsReset
             Bullet.PlayerBulletShotPos();
             
         }
-        public static void PlayerRender()
-        {
-            for (int i = 0; i < Map._y; i++)
-            {
-                for (int j = 0; j < Map._x; j++)
-                {
-                    if (i == PlayerLeftPos[0] && j == PlayerLeftPos[1])
-                    {
-                        Console.Write(Map._map[i,j]);
-                    }
-                    else if (i == PlayerCorePos[0] && j == PlayerCorePos[1])
-                    {
-                        Console.Write(Map._map[i, j]);
-                    }
-                    else if (i == PlayerRightPos[0] && j == PlayerRightPos[1])
-                    {
-                        Console.Write(Map._map[i, j]);
-                    }
-                    else if (i == PlayerHeadPos[0] && j == PlayerHeadPos[1])
-                    {
-                        Console.Write(Map._map[i, j]);
-                    }
-                }
-            }
-        }
+        
         //public static void PlayerPosPrint(int y, int x)
         //{
         //    PlayerCorePos[1] = x; PlayerCorePos[0] = y;

@@ -13,7 +13,9 @@ namespace ProjectsReset
         {
             Console.CursorVisible = false;
             Bullet._solomon = false;
-            Map map=new Map();            
+            Map map=new Map();
+            Player player;
+            Enemy enemy;
             Map.SetMap(29,40);
             ConsoleKeyInfo isKey;
             Stopwatch stopwatch = new Stopwatch();
@@ -29,6 +31,7 @@ namespace ProjectsReset
                     isKey = Console.ReadKey(true);
                     if (isKey.Key == ConsoleKey.Spacebar)
                     {
+                        
                         Player.PlayerBullShot();
                     }
                     else if (isKey.Key == ConsoleKey.A)
@@ -42,12 +45,11 @@ namespace ProjectsReset
 
                 }
                 if (stopwatch.ElapsedMilliseconds > 100)
-                { 
-                
-                  Player.PlayerRender();
-                  Map.DrawMap();
+                {
+                    
                   stopwatch.Restart();
                 }
+                    Map.DrawMap();
 
 
 

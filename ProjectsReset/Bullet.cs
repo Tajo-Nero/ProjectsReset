@@ -9,7 +9,7 @@ namespace ProjectsReset
             = { Player.PlayerCorePos[0] - 1, Player.PlayerCorePos[1] };//플레이어총알 위치
         public static int[] BulletEnemyPos
             = { Enemy.EnemyCorePos[0] + 1, Enemy.EnemyCorePos[1] };//적총알 위치
-        public static char _bulletPlayer = '|';//총알모양
+        public static char _bulletPlayer = '^';//총알모양
         public static char _bulletEnemy = '*';//총알모양
 
         public static void FireOn()
@@ -28,8 +28,7 @@ namespace ProjectsReset
                 {
                     if (i == BulletPlayerPos[0] && j == BulletPlayerPos[1])
                     {
-                        Map._map[i, j] = _bulletPlayer;
-                        Console.Write(Map._map[i,j]);
+                        Map._map[i, j] = _bulletPlayer;                        
                     }
                 }
             }

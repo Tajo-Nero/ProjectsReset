@@ -40,11 +40,14 @@ namespace ProjectsReset
             {
                 for (int j = 0; j < _x; j++)
                 {
-                    Player player = new Player(28, 19);//뉴할당을 해줘야 됨                    
-                    Enemy enemy = new Enemy(0,19);
-                    Bullet bullet = new Bullet();
-                    
-                    
+                    new Player(28, 19);
+                    new Enemy(0, 19);
+                    new Bullet();
+
+
+
+                    Bullet.EnemyBulletShotPos();
+                    Bullet.PlayerBulletShotPos();
                     Console.Write(_map[i, j]);
                 }
                 Console.WriteLine();
