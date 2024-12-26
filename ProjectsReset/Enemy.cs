@@ -16,7 +16,7 @@ namespace ProjectsReset
         public static char _enemyLefe = 'x';
         public static char _enemyRight = 'c';
 
-        public static void EnemyPosPrint(int x, int y)
+        public static void EnemyPosPrint(int y, int x)
         {
             EnemyCorePos[0] = y; EnemyCorePos[1] = x;
             EnemyLPos[0] = y; EnemyLPos[1] = x-1;
@@ -28,18 +28,18 @@ namespace ProjectsReset
                 {
                     if (i == EnemyLPos[0] && j == EnemyLPos[1])
                     {
-                        Map._map[j,i] = _enemyLefe;
-                        Console.Write(Map._map[j, i]);
+                        Map._map[i, j] = _enemyLefe;
+                        
                     }
                     else if (i == EnemyCorePos[0] && j == EnemyCorePos[1])
                     {
-                        Map._map[j, i] = _enemyCore;
-                        Console.Write(Map._map[j, i]);
+                        Map._map[i, j] = _enemyCore;
+                        
                     }
                     else if (i == EnemyRPos[0] && j == EnemyRPos[1])
                     {
-                        Map._map[j, i] = _enemyRight;
-                        Console.Write(Map._map[j, i]);
+                        Map._map[i, j] = _enemyRight;
+                        
                     }
                 }
             }

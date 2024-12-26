@@ -22,7 +22,7 @@ namespace ProjectsReset
                 Map.DrawMap();
             }
 
-            Console.WriteLine("dg");
+            
         }
     }
 }

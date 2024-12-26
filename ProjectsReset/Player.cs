@@ -14,12 +14,12 @@ namespace ProjectsReset
         public static char _playerRight = 'c';
         public static char _playerHead = 'd';
 
-        public static void PlayerPosPrint(int x, int y)
+        public static void PlayerPosPrint(int y, int x)
         {
             PlayerCorePos[1] = x; PlayerCorePos[0] = y;
-            PlayerLeftPos[1] = y; PlayerLeftPos[0] = x - 1;
-            PlayerRightPos[1] = y; PlayerRightPos[0] = x + 1;
-            PlayerHeadPos[1] = y - 1; PlayerHeadPos[0] = x;
+            PlayerLeftPos[1] = x-1; PlayerLeftPos[0] = y;
+            PlayerRightPos[1] = x+1; PlayerRightPos[0] = y ;
+            PlayerHeadPos[1] = x; PlayerHeadPos[0] = y-1;
 
             for (int i = 0; i < Map._y; i++)
             {
@@ -27,23 +27,23 @@ namespace ProjectsReset
                 {
                     if (i == PlayerLeftPos[0] && j == PlayerLeftPos[1])
                     {
-                        Map._map[j, i] = _playerLefe;
-                        Console.Write(Map._map[i,j]);
+                        Map._map[i, j] = _playerLefe;
+                        
                     }
                     else if (i == PlayerCorePos[0] || j == PlayerCorePos[1])
                     {
-                        Map._map[j, i] = _playerCore;
-                        Console.Write(Map._map[j,i]);
+                        Map._map[i, j] = _playerCore;
+                        
                     }
                     else if (i == PlayerRightPos[0] || j == PlayerRightPos[1])
                     {
-                        Map._map[j, i] = _playerRight;
-                        Console.Write(Map._map[j, i]);
+                        Map._map[i, j] = _playerRight;
+                        
                     }
                     else if(i == PlayerHeadPos[0] || j == PlayerHeadPos[1])
                     {
-                        Map._map[j, i] = _playerHead;
-                        Console.Write(Map._map[j, i]);
+                        Map._map[i, j] = _playerHead;
+                        
                     }
 
                 }

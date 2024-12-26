@@ -15,15 +15,15 @@ namespace ProjectsReset
         static char _space = ' ';
         public static void SetMap(int x, int y)
         {
-            _x = x;
-            _y = y;
+            _x = y;
+            _y = x;
             _map = new char[_y, _x];
         }
         public static void DrawMap()
         {
             Console.Clear();
 
-            _map = new char[_x, _y];
+            _map = new char[_y,_x];
             //적이 벽에 닿으면 위치 고정
             if (Enemy.EnemyLPos[1] <= _x - _x)//왼벽에 적 왼날개 닿으면
             {
@@ -51,6 +51,8 @@ namespace ProjectsReset
                 Player.PlayerHeadPos[0] = _x - (_x - 1);
             }
             
+            Player.PlayerPosPrint(29, 20);
+            Enemy.EnemyPosPrint(0, 20);
         
             for (int i = 0; i < _y; i++)
             {
@@ -59,9 +61,9 @@ namespace ProjectsReset
                 {
                                  
                     if (j == 0 || j == _x - 1)
-                    { _map[j,i] = _wall; }
+                    { _map[i,j] = _wall; }
                     else
-                    { _map[j, i] = _space; }
+                    { _map[i, j] = _space; }
                 }
             }
             //출력하는 반복문
@@ -69,9 +71,7 @@ namespace ProjectsReset
             {
                 for (int j = 0; j < _x; j++)
                 {
-                    Player.PlayerPosPrint(29, 20);
-                    Enemy.EnemyPosPrint(29, 20);
-                    Console.Write(_map[j, i]);
+                    Console.Write(_map[i, j]);
                 }
                 Console.WriteLine();
             }
