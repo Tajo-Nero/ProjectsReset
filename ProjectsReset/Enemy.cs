@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 namespace ProjectsReset
 {
     class Enemy
-    {
-        Bullet Bullet = new Bullet();
+    {        
+        public int x;
+        public int y;
         public static int[] EnemyCorePos = { 0, 0 };//적 위치
         public static int[] EnemyLPos = { 0, 0 };
         public static int[] EnemyRPos = { 0, 0 };
@@ -17,8 +18,10 @@ namespace ProjectsReset
         public static char _enemyLefe = '(';
         public static char _enemyRight = ')';
 
-        public Enemy(int y, int x)
+        public Enemy(int y,int x)
         {
+            this.y = y;
+            this.x = x;
             EnemyCorePos[0] = y; EnemyCorePos[1] = x;
             EnemyLPos[0] = y; EnemyLPos[1] = x - 1;
             EnemyRPos[0] = y; EnemyRPos[1] = x + 1;
@@ -43,6 +46,15 @@ namespace ProjectsReset
             }
            
         }
+        public void EnemyPosPrint()
+        {
+            Console.SetCursorPosition(EnemyCorePos[0]=x, EnemyCorePos[1]=y);
+            Console.Write(_enemyCore);
+            Console.SetCursorPosition(EnemyLPos[0]=x-1, EnemyLPos[1]=y);
+            Console.Write(_enemyLefe);
+            Console.SetCursorPosition(EnemyRPos[0]=x+1, EnemyRPos[1] = y);
+            Console.Write(_enemyRight);
+        }
         public static void EnemyMove()
         {
             if (EnemyLPos[1] <= Map._x - Map._x)//왼벽에 적 왼날개 닿으면
@@ -59,13 +71,15 @@ namespace ProjectsReset
             }
         }
         public static void EnemyShot()
-        {
-            
+        {            
             for (int i = 0; i < Map._y; i++)
             {
                 for (int j = 0; j < Map._x; j++)
                 {
-                   
+                    new Bullet();
+                    
+                    Bullet.EnemyBulletShotPos();
+
                 }
             }
         }

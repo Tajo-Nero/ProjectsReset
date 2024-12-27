@@ -4,19 +4,23 @@ namespace ProjectsReset
 {
     class Player
     {
-        public static int[] PlayerCorePos = { 0, 0 };//플레이어 위치
+        int x;
+        int y;
+        public static int[] PlayerCorePos = { 28, 19 };//플레이어 위치
         public static int[] PlayerLeftPos = { 0, 0 };
         public static int[] PlayerRightPos = { 0, 0 };
         public static int[] PlayerHeadPos = { 0, 0 };
         //{상하,좌우}
-        public static char _playerCore = '0';//플레이어모양
-        public static char _playerLefe = '<';
-        public static char _playerRight = '>';
-        public static char _playerHead = '1';
+        public static char _playerCore = 'H';//플레이어모양
+        public static char _playerLeft = ')';
+        public static char _playerRight = '(';
+        public static char _playerHead = '^';
 
        public static Bullet _bullet;
-        public Player(int y, int x)
+        public Player(int y,int x)
         {
+            this.y = y;
+            this.x = x;
             //플레이어 위치
             PlayerCorePos[1] = x; PlayerCorePos[0] = y;
             PlayerLeftPos[1] = x - 1; PlayerLeftPos[0] = y;
@@ -24,14 +28,14 @@ namespace ProjectsReset
             PlayerHeadPos[1] = x; PlayerHeadPos[0] = y - 1;
 
 
-            //배열에위치값넣기
+            //위치에 모양넣기
             for (int i = 0; i < Map._y; i++)
             {
                 for (int j = 0; j < Map._x; j++)
                 {
                     if (i == PlayerLeftPos[0] && j == PlayerLeftPos[1])
                     {
-                        Map._map[i, j] = _playerLefe;
+                        Map._map[i, j] = _playerLeft;
                     }
                     else if (i == PlayerCorePos[0] && j == PlayerCorePos[1])
                     {
@@ -49,7 +53,7 @@ namespace ProjectsReset
             }
             
         }
-        public static void MoveLeft()
+        public void MoveLeft()
         {
             PlayerCorePos[1] --;
             PlayerLeftPos[1] --;
@@ -64,7 +68,7 @@ namespace ProjectsReset
                 PlayerHeadPos[0] = Map._x + (Map._x + 1);
             }
         }
-        public static void MoveRight()
+        public void MoveRight()
         {
             PlayerCorePos[1]++;
             PlayerLeftPos[1]++;
@@ -81,43 +85,23 @@ namespace ProjectsReset
         }
         public static void PlayerBullShot()
         {
-            new Bullet();
-            Bullet.FireOn();
-            Bullet.PlayerBulletShotPos();
-            
+            _bullet = new Bullet();
+            _bullet.PlayerBulletShotPos();
+            _bullet.BulltShotPlayerDelimited();
         }
         
-        //public static void PlayerPosPrint(int y, int x)
-        //{
-        //    PlayerCorePos[1] = x; PlayerCorePos[0] = y;
-        //    PlayerLeftPos[1] = x-1; PlayerLeftPos[0] = y;
-        //    PlayerRightPos[1] = x+1; PlayerRightPos[0] = y ;
-        //    PlayerHeadPos[1] = x; PlayerHeadPos[0] = y-1;
-        //
-        //    for (int i = 0; i < Map._y; i++)
-        //    {
-        //        for (int j = 0; j <Map._x; j++)
-        //        {
-        //            if (i == PlayerLeftPos[0] && j == PlayerLeftPos[1])
-        //            {
-        //                Map._map[i, j] = _playerLefe;                        
-        //            }
-        //            else if (i == PlayerCorePos[0] && j == PlayerCorePos[1])
-        //            {
-        //                Map._map[i, j] = _playerCore;                        
-        //            }
-        //            else if (i == PlayerRightPos[0] && j == PlayerRightPos[1])
-        //            {
-        //                Map._map[i, j] = _playerRight;                        
-        //            }
-        //            else if(i == PlayerHeadPos[0] && j == PlayerHeadPos[1])
-        //            {
-        //                Map._map[i, j] = _playerHead;                        
-        //            }
-        //        }
-        //    }
-        //}
-        
+        public void PlayerPosPrint()
+        {
+            Console.SetCursorPosition(PlayerLeftPos[0]=x-1, PlayerLeftPos[1]=y);
+            Console.Write(_playerLeft);
+            Console.SetCursorPosition(PlayerCorePos[0] = x, PlayerCorePos[1]=y);
+            Console.Write(_playerCore);
+            Console.SetCursorPosition(PlayerRightPos[0]=x+1, PlayerRightPos[1]=y);
+            Console.Write(_playerRight);
+            Console.SetCursorPosition(PlayerHeadPos[0]=x, PlayerHeadPos[1]=y-1);
+            Console.Write(_playerHead);
 
+
+        }      
     }
 }

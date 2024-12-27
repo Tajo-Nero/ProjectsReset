@@ -5,9 +5,9 @@ namespace ProjectsReset
     class Map
     {
         
-       public static int _y =0;//세로길이 행
+       public static int _y;//세로길이 행
 
-       public static int _x =0;//가로길이 열
+       public static int _x;//가로길이 열
 
         public static char[,] _map;  
 
@@ -22,6 +22,7 @@ namespace ProjectsReset
         public static void DrawMap()
         {
             Console.Clear();
+                    Player player = new Player(28,19);
             _map = new char[_y,_x];    
             //맵구현
             for (int i = 0; i < _y; i++)
@@ -40,14 +41,9 @@ namespace ProjectsReset
             {
                 for (int j = 0; j < _x; j++)
                 {
-                    new Player(28, 19);
-                    new Enemy(0, 19);
-                    new Bullet();
-
-
-
-                    Bullet.EnemyBulletShotPos();
-                    Bullet.PlayerBulletShotPos();
+                    //Enemy enemy = new Enemy();
+                    //enemy.EnemyPosPrint();
+                    //player.PlayerPosPrin();
                     Console.Write(_map[i, j]);
                 }
                 Console.WriteLine();
