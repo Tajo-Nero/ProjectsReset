@@ -5,34 +5,23 @@ namespace ProjectsReset
     class Bullet
     {
         public static bool _solomon;
-        public static int[] BulletPlayerPos
-            = { Player.PlayerCorePos[0]-1 , Player.PlayerCorePos[1] };//플레이어총알 위치
+        public int[] BulletPlayerPos
+            = { Player.PlayerCorePos[0], Player.PlayerCorePos[1]};//플레이어총알 위치
         public static int[] BulletEnemyPos
             = { Enemy.EnemyCorePos[0] + 1, Enemy.EnemyCorePos[1] };//적총알 위치
-        public static char _bulletPlayer = '¤';//총알모양
+        public char _bulletPlayer = 'H';//총알모양
         public static char _bulletEnemy = 'ψ';//총알모양
-
+       public Enemy _enemy = new Enemy(0,19);
         public static void FireOn()
         {
             _solomon = true;
         }
         public void PlayerBulletShotPos()
         {
-            //플레이어 총알 방향
-            //for (int i = 0; i < Map._y; i++)
-            //{
-            //    for (int j = 0; j < Map._x; j++)
-            //    {
-            //        if (i == BulletPlayerPos[0] && j == BulletPlayerPos[1])
-            //        {
-            //            BulletPlayerPos[1] = Player.PlayerCorePos[1];
-            //            BulletPlayerPos[0] = Player.PlayerCorePos[0] + 1;
-            //            Map._map[i, j] = _bulletEnemy;
-            //        }
-            //    }
-            //}
-            Console.SetCursorPosition(BulletPlayerPos[1], BulletPlayerPos[0]-=1);
-            Console.Write(_bulletPlayer);
+            
+            
+            
+            
 
         }
         public static void EnemyBulletShotPos()
@@ -46,23 +35,27 @@ namespace ProjectsReset
                     if (i == BulletEnemyPos[0] && j == BulletEnemyPos[1])
                     {
                         BulletEnemyPos[1] = Enemy.EnemyCorePos[1];
-                        BulletEnemyPos[0] = Enemy.EnemyCorePos[0] + 1;
+                        BulletEnemyPos[0] = Enemy.EnemyCorePos[0]+1;
                         Map._map[i, j] = _bulletEnemy;
                     }
                 }
-            }
+            } 
         }
         public void BulltShotPlayerDelimited()
         {
             if (BulletPlayerPos[0] == Enemy.EnemyCorePos[0] && BulletPlayerPos[1] == Enemy.EnemyCorePos[1])
             {
                 Map._map[BulletPlayerPos[0], BulletPlayerPos[1]] = Map._space;//적 코어랑 맞으면 총알 사라짐
+                Map._map[Enemy.EnemyCorePos[0], Enemy.EnemyCorePos[1]] = Map._space;//적도 사라져야하는대 다시프린트해서 모름
+                Map._map[Enemy.EnemyLPos[0], Enemy.EnemyLPos[1]] = Map._space;
+                Map._map[Enemy.EnemyRPos[0], Enemy.EnemyRPos[1]] = Map._space;
+                
+                
             }
-            else if (BulletPlayerPos[1] <= 1)//위쪽 끝에 닿으면 총알 사라짐
+            else if (BulletPlayerPos[1] <= 0)//위쪽 끝에 닿으면 총알 사라짐
             {
                 Map._map[BulletPlayerPos[0], BulletPlayerPos[1]] = Map._space;
-                BulletPlayerPos[1] = Player.PlayerCorePos[1];
-                BulletPlayerPos[0] = Player.PlayerCorePos[0] + 1;
+               
             }
         }
         public static void BulltShotEnemyDelimited()

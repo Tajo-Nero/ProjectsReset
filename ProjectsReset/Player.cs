@@ -7,9 +7,9 @@ namespace ProjectsReset
         int x;
         int y;
         public static int[] PlayerCorePos = { 28, 19 };//플레이어 위치
-        public static int[] PlayerLeftPos = { 0, 0 };
-        public static int[] PlayerRightPos = { 0, 0 };
-        public static int[] PlayerHeadPos = { 0, 0 };
+        public static int[] PlayerLeftPos = { 28, 18 };
+        public static int[] PlayerRightPos = { 28,20  };
+        public static int[] PlayerHeadPos = { 27, 19};
         //{상하,좌우}
         public static char _playerCore = 'H';//플레이어모양
         public static char _playerLeft = ')';
@@ -55,10 +55,9 @@ namespace ProjectsReset
         }
         public void MoveLeft()
         {
-            PlayerCorePos[1] --;
-            PlayerLeftPos[1] --;
-            PlayerRightPos[1] --;
-            PlayerHeadPos[1] --;
+            
+            PlayerPosPrint();
+            //PlayerPosPrint();
             //플레이어가 벽에 닿으면 위치 고정
             if (PlayerLeftPos[1] <= Map._x - Map._x)//왼벽에 플레이어 왼날개 닿으면
             {
@@ -70,11 +69,8 @@ namespace ProjectsReset
         }
         public void MoveRight()
         {
-            PlayerCorePos[1]++;
-            PlayerLeftPos[1]++;
-            PlayerRightPos[1]++;
-            PlayerHeadPos[1]++;
-
+            
+            PlayerPosPrint();
             if (PlayerRightPos[1] >= Map._x)//오른벽에 플레이어 오른날개 닿으면
             {
                 PlayerRightPos[1] = Map._x - 1;//오른날개고정
@@ -83,13 +79,26 @@ namespace ProjectsReset
                 PlayerHeadPos[0] = Map._x - (Map._x - 1);//머리고정
             }
         }
-        public static void PlayerBullShot()
-        {
+        public static void PlayerUpDate()
+        { 
+            Console.Clear();
             _bullet = new Bullet();
-            _bullet.PlayerBulletShotPos();
-            _bullet.BulltShotPlayerDelimited();
+            for (int i = 0; i < Map._y; i++)
+            {
+                   
+                if (_bullet.BulletPlayerPos[1] >= 1)//위쪽 끝에 닿으면 총알 사라짐
+                {
+                    Console.SetCursorPosition(_bullet.BulletPlayerPos[0], _bullet.BulletPlayerPos[1] -= 1);
+                    Console.WriteLine(_bullet._bulletPlayer);
+                }
+                else
+                {
+                    continue;
+                }
+                 _bullet.BulltShotPlayerDelimited();
+            }
         }
-        
+
         public void PlayerPosPrint()
         {
             Console.SetCursorPosition(PlayerLeftPos[0]=x-1, PlayerLeftPos[1]=y);
